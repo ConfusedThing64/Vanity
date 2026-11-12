@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "vanityweapon",
+  "version": "${version}",
+  "name": "Soulbound Vanity Weapon",
+  "description": "Adds a vanity weapon slot to Soulbound Turn Battle. Shows any inventory item in battle instead of your equipped weapon (stats unchanged). Server-synced so other players see it.",
+  "authors": ["you"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.vanityweapon.VanityMod"],
+    "client": ["com.vanityweapon.client.VanityClient"]
+  },
+  "mixins": ["vanityweapon.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.5",
+    "fabric-api": "*",
+    "minecraft": "~1.21.1",
+    "turnbattle": ">=2.0.28"
+  }
+}
