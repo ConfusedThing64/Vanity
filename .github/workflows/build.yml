@@ -5,19 +5,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: vanityweapon
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
-      - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 8.10
-      - run: gradle build --no-daemon
+      - name: Download Gradle 8.10
+        run: |
+          curl -sL https://services.gradle.org/distributions/gradle-8.10-bin.zip -o $HOME/gradle.zip
+          unzip -q $HOME/gradle.zip -d $HOME
+      - name: Build
+        working-directory: vanityweapon
+        run: $HOME/gradle-8.10/bin/gradle build --no-daemon
       - uses: actions/upload-artifact@v4
         with:
           name: vanityweapon-jar
